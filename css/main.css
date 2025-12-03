@@ -1,0 +1,20 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.prizes {
+  padding: 22px 0px 55px;
+}
+.prizes__container {
+  max-width: 1110px;
+  width: calc(100% - 80px);
+  margin: 0 auto;
+}
+ 
+.prizes__info {
+  max-height: 391px;
+  overflow: hidden;
+  position: relative;
+} 
