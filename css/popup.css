@@ -1,0 +1,30 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.order {
+  padding: 17px 220px 16px 250px;
+}
+.order__container {
+  max-width: 1110px;
+  display: flex;
+  align-items: center;
+}
+.order__header {
+  display: flex;
+  gap: 14px;
+  margin-left: auto;
+}
+.order__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.order__info--modif {
+  font-size: 15px;
+  font-weight: bold;
+  background: #f7d22d;
+  padding: 4px 15px;
+  border-radius: 50%;
+}
