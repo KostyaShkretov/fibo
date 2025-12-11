@@ -35,38 +35,32 @@ let sausesList = [
   {
     icon: "cheese",
     title: "Сырный соус",
-    price: "120 ₽",
-    isActive: false,
+    price: "от 120 ₽", 
   },
   {
     icon: "barbecue",
     title: "Барбекю",
-    price: "120 ₽",
-    isActive: false,
+    price: "от 120 ₽", 
   },
   {
     icon: "ranch",
     title: "Ранч",
-    price: "120 ₽",
-    isActive: false,
+    price: "от 120 ₽", 
   },
   {
     icon: "condensedmilk",
     title: "Сгущёнка",
-    price: "120 ₽",
-    isActive: true,
+    price: "от 120 ₽", 
   },
   {
     icon: "raspberryjam",
     title: "Малиновое варенье",
-    price: "120 ₽",
-    isActive: false,
+    price: "от 120 ₽", 
   },
   {
     icon: "cheese",
     title: "Сырный соус",
-    price: "120 ₽",
-    isActive: false,
+    price: "от 120 ₽", 
   },
 ];
 
@@ -74,8 +68,8 @@ let sausesCategory = document.querySelector(".sauses__selector");
 if (sausesCategory) {
   let sausesHtml = "";
   sausesList.forEach(function (category) {
-    sausesHtml += `<li>
-                           <a href="#" class="${category.isActive ? "active": ""}">
+    sausesHtml += `<li class = "click">
+                           <a href="#"">
                             <img src="images/${category.icon}.svg" alt="">
                             <h3>${category.title}</h3>
                             <p>${category.price}</p>
@@ -84,3 +78,31 @@ if (sausesCategory) {
   });
   sausesCategory.innerHTML = sausesHtml;
 }
+//  ждем полной загрузки страницы
+document.addEventListener("DOMContentLoaded", function () {
+  const popupShow = document.querySelector(".popup-order");
+  const popupBtn = document.querySelector(".order__btn");
+  if (popupShow) {
+    if (popupBtn) {
+      popupBtn.addEventListener("click", function () {
+        if (popupShow) {
+          document.body.classList.add("no__scroll");
+          popupShow.classList.add("popup-order--show");
+          setTimeout(function () {
+            popupShow.classList.add("popup-order--active");
+          }, 100);
+        }
+      });
+    }
+    const popupClose = document.querySelector(".popup-order__head__btn");
+    if (popupClose) {
+      popupClose.addEventListener("click", function () {
+        popupShow.classList.remove("popup-order--active");
+        setTimeout(function () {
+          popupShow.classList.remove("popup-order--show");
+          document.body.classList.remove("no__scroll");
+        }, 300);
+      });
+    }
+  }
+});
