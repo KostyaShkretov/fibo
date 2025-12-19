@@ -303,16 +303,15 @@ ul {
 }
 /* end popup-order*/
 
-/* popup-cart */ 
+/* popup-cart */
 .popup-cart__container {
   max-width: 796px;
   margin: 0 auto;
   width: calc(100% - 80px);
   margin-bottom: 40px;
-  padding: 40px 0 56px;
 }
 .popup-cart__head {
-  padding-bottom: 32px;
+  padding-block: 32px;
 }
 .popup-cart__header {
   color: var(--color__btn);
@@ -326,7 +325,7 @@ ul {
   align-items: center;
   justify-content: center;
 }
-.popup-cart__image {
+.popup-cart__img {
   margin-right: 24px;
 }
 .popup-cart__list {
@@ -347,12 +346,14 @@ ul {
   font-size: 12px;
   font-weight: 300;
   max-width: 408px;
-}
+} 
 .popup-cart__summ {
   color: var(--color__btn);
   font-size: 24px;
   font-weight: 800;
-  margin-right: 36px;
+  margin-right: 32px;
+  min-width: 100px; 
+  flex-shrink: 0;
 }
 .popup-cart__calc {
   width: 92px;
@@ -398,8 +399,12 @@ ul {
 }
 .popup-cart__delete {
   margin-left: auto;
+  padding-left: 40px;
 }
+/* end popup-cart */
+
 /* promocode */
+
 .promocode__container {
   max-width: 796px;
   margin: 0 auto;
@@ -420,8 +425,8 @@ ul {
 .promocode__input {
   position: relative;
   overflow: hidden;
-  width: 353px;   
-  border-radius: 8px
+  width: 353px;
+  border-radius: 8px;
 }
 input::placeholder {
   font-size: 13px;
@@ -432,9 +437,9 @@ input::placeholder {
   width: 100%;
   padding: 8px 24px;
   height: 42px;
-  outline: none;    
+  outline: none;
   border: 1px solid #e2e2e9;
-  border-radius: 8px
+  border-radius: 8px;
 }
 .promocode__btn {
   position: absolute;
@@ -465,8 +470,7 @@ input::placeholder {
   font-size: 36px;
   font-weight: 700;
   align-items: baseline;
-}
-
+} 
 /* end promocode */
 
 /* form-input */
@@ -517,6 +521,7 @@ input::placeholder {
   max-width: 796px;
   margin: 0 auto;
   width: calc(100% - 80px);
+  margin-bottom: 100px;
 }
 .checkout-footer__buttons {
   display: flex;
@@ -541,9 +546,9 @@ input::placeholder {
 }
 .checkout-footer__btn--back::before {
   content: "❮";
-  cursor: pointer; 
+  cursor: pointer;
   color: #696f7a;
-  font-size: 14px; 
+  font-size: 14px;
 }
 .checkout-footer__btn--back:hover,
 .checkout-footer__btn--back:hover::before {
