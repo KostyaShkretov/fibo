@@ -104,7 +104,91 @@
                 </button>
             </div>
         </section>
-        <section class="sauses">
+    </main>
+
+    <section>
+        <div class="popup-cart popup-cart__container">
+            <div class="popup-cart__head">
+                <header class="popup-cart__header">Корзина</header>
+            </div>
+            <div class="popup-cart__items">
+                <!-- <div class="popup-cart__body">
+                    <div class="popup-cart__image">
+                        <img src="images/pizza.jpg" alt="">
+                    </div>
+                    <div class="popup-cart__list">
+                        <div class="popup-cart__about">
+                            <h4>С креветками и трюфелями</h4>
+                            <p>Домашнаяя паста феттуччине, сливочный соус, креветки, трюфельное масло, черный перец,
+                                пармезан.350 г
+                            </p>
+                        </div>
+                        <div class="popup-cart__summ">
+                            120 ₽
+                        </div>
+                        <div class="popup-cart__calc">
+                            <button class="popup-cart__minus">-</button>
+                            <input type="text" value="0" class="popup-cart__quantity">
+                            <button class="popup-cart__plus">+</button>
+                        </div>
+                    </div>
+                    <div class="popup-cart__delete">
+                        <img src="images/close-popup.svg" alt="">
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <div class="promocode">
+            <div class="promocode__container">
+                <div class="promocode__head">
+                    <h4 class="promocode__header">Промокод</h4>
+                </div>
+                <div class="promocode__block">
+                    <div class="promocode__input">
+                        <input type="text" placeholder="Введите промокод">
+                        <button class="promocode__btn">Применить</button>
+                    </div>
+                    <div class="promocode__summ">
+                        <h5>Сумма заказа:</h5>
+                        <p> <span>1 048 </span>₽</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form form__container">
+            <div>
+                <h5>Заказ на доставку</h5>
+            </div>
+            <div class="form__inputs">
+                <div class="form__user">
+                    <label for="name">Имя</label>
+                    <input type="text" name="name" id="name" required placeholder="Костя">
+                </div>
+                <div class="form__user">
+                    <label for="number">Номер</label>
+                    <input type="text" name="name" id="number" required placeholder="+7 777 777 77 77">
+                </div>
+                <div class="form__user">
+                    <label for="email">Email</label>
+                    <input type="text" name="name" id="email" required placeholder="email@mail.ru">
+                </div>
+            </div>
+        </div>
+        <div class="checkout-footer checkout-footer__container">
+            <div class="checkout-footer__buttons">
+                <div class="checkout-footer__button">
+                    <button class="checkout-footer__btn--back">Вернуться в магазин</button>
+                </div>
+                <div class="checkout-footer__button">
+                    <button class="checkout-footer__btn--order">Оформить заказ</button>
+                </div>
+            </div>
+            <div>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="sauses">
             <div class="sauses__container">
                 <div class="sauses__head">
                     <h2>
@@ -112,18 +196,12 @@
                     </h2>
                 </div>
                 <ul class="sauses__selector">
-                    <!-- <li>
-                           <a href="#" class="active">
-                            <img src="images/cheese.svg" alt="">
-                            <h3>Сырный соус</h3>
-                            <p>от 120 ₽</p>
-                           </a> 
-                    </li> -->
+                
                 </ul>
             </div>
-        </section>
+        </section> -->
 
-        <section>
+    <!-- <section>
             <div class="order">
                 <div class="order__container">
                     <button class="order__btn">
@@ -131,26 +209,30 @@
                     </button>
                 </div>
             </div>
-        </section>
-    </main>
+        </section> -->
+
+
     <div class="popup-order">
         <div class="popup-order__container">
             <div class="popup-order__head">
                 <h3>Время доставки</h3>
-                <button class="popup-order__head__btn"><svg class="close" width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<mask id="mask0_51_3985" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="40" height="40">
-<rect width="40" height="40" fill="url(#pattern0_51_3985)"/>
-</mask>
-<g mask="url(#mask0_51_3985)">
-<rect x="0.5" y="0.5" width="39" height="39"  stroke="black"/>
-</g>
-<defs>
-<pattern id="pattern0_51_3985" patternContentUnits="objectBoundingBox" width="1" height="1">
-<use xlink:href="#image0_51_3985" transform="scale(0.00666667)"/>
-</pattern>
-<image id="image0_51_3985" width="150" height="150" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAA8AXHiAAAFZUlEQVR4Ae2d6XETQRBGFYJDcEjOwA6BUMgAMsEZmBCcgcmgqaG0JWmWPWZ3jj6e/kh79XS/73kNW4W4XHhBAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEDAEgEReRWRX3J7fYnIDxF5tjSHxl4TwyvLxHR6JdavGvut0pOIPInIxzTtf94TjLcqiwUsktiJyL1QOeLE/skdmg2p7iEgV2H6V6nuGS59/igsrfv0gsEnIMi1M9LQbEXkfTKm4B25NuQ6IFXC/75R1s7hApnyU5FrIeaDUv3ju1DS3u7clsJt5MoiPyNVYp+Vs7spIp+FMuWnI9c1/rNSpSzsmpR1LiLfc1MObIeXq4JUCfv3LB67m9cHd38OyJRfElauSlKlDHw9iBaRl9ySg9vh5KokVcL9Yvf2tNJ5RUBh5ILZilD3hwB1T2P9M6zW+cyOAmyGZLYDRjMk+3YAbpkTbJbZ7DoCwDkmmMyZHNoDyBs2WNxYVPkE0MsFBlVUmheJDDby7HMTGuyJCDjizA3U2S4ZCXSkWbeT73BGBOARZuygSvkSnsF7nq086QFXeAzA40wD1Di/pKcgPM1yPlkFFTwE4mEGBSrUb8FyMJZ7r5+kwooWA7LYs8Lo27dkKShLvbZPzsAKFgKz0KOBqPu3qDk4zb31T8rgihoD1NiTwWjHt6wpSE29jE/GQQcaAtXQg4Mo9Y0wMtiRa+tLwmFHIwIesabD6PSP1DPonmvpJx+gwx6B91gjQFT2RmwZfMva9kgH7LiFAC1qBozG/sg1RahZyz5ZJqj5b/YOfvPSw2VhviknhHoV7zYPlhRuIJVH2wbLhVQepZpmGiQXUk0BeH7vLBdSeZYpn62TXEiVg4+w3VgupIog0dKMjeRCqiXgkfZXlgupIsmzNitirdHh2CEClaWanpdy1zqUhpOLGkmFXE78ODRGY6mQ61Aqxi/qJBVyGfekqP3OUiFXUTpGTx4kFXIZ9WVX24OlQq5dKRk7SYlUyGXMm9V2K0r1VrPWatMc1E2ghQgtauqmSHcPBFoK0LL2wxBs6CLQI/gea+iiGrybnoH3XCt4rGPHHxH0iDXHUg62+siAR64dLOa+42oIVkMPfak7X01ToJp6cR572/E0Bqmxp7YpOKuuOUDNvTnToO44FoKz0GPdVIxXsxSYpV6Na3GufYtBWez5XErGrrYckOXejWlS1q6HYDzMUJaa8rM9BeJpFuXarLfnMQiPM62nqOyo5wA8z6ZMo8d2IoCPMONjqoO3IgGPNOtQrSKCjjhzV8kiA448e1PJAHup+Z8c8BVKyVakuv3MwuLG4tQnQM7xwWTOpGgPAJdxwWaZzeoRwK3i+XcQRtuMHs4A2AOO1Q1YreK5HQTUjcXeTzDbICUiL9P3+Jx8D/fX6YpyvWzEZOuwiDyLyNdJodLl4aSakq4kV8rgeapp/l1EfiLV+RgryfXzfCdKKlS4W4W9U+URVpDrK69pdvvk3QqpsuTPypWVs7t5QiykWoj9jFwLJe3tFpHPA3Ih1UbUB+X63Chr57CIfCsUC6l2xntArm87S+s/TUSeROT3TrmQqjDSArlSBk+F5XWfvkOuPwmQ7in0dneVKzFcevmTaorjKlf6tXj/Z64EIz3n8vPgbhq48/v1QXRieS9YYu3n119npiwHAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIDCIwF9mw2ku6I9UyQAAAABJRU5ErkJggg=="/>
-</defs>
-</svg></button>
+                <button class="popup-order__head__btn"><svg class="close" width="40" height="40" viewBox="0 0 40 40"
+                        fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <mask id="mask0_51_3985" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0"
+                            width="40" height="40">
+                            <rect width="40" height="40" fill="url(#pattern0_51_3985)" />
+                        </mask>
+                        <g mask="url(#mask0_51_3985)">
+                            <rect x="0.5" y="0.5" width="39" height="39" stroke="black" />
+                        </g>
+                        <defs>
+                            <pattern id="pattern0_51_3985" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                <use xlink:href="#image0_51_3985" transform="scale(0.00666667)" />
+                            </pattern>
+                            <image id="image0_51_3985" width="150" height="150" preserveAspectRatio="none"
+                                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAA8AXHiAAAFZUlEQVR4Ae2d6XETQRBGFYJDcEjOwA6BUMgAMsEZmBCcgcmgqaG0JWmWPWZ3jj6e/kh79XS/73kNW4W4XHhBAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEDAEgEReRWRX3J7fYnIDxF5tjSHxl4TwyvLxHR6JdavGvut0pOIPInIxzTtf94TjLcqiwUsktiJyL1QOeLE/skdmg2p7iEgV2H6V6nuGS59/igsrfv0gsEnIMi1M9LQbEXkfTKm4B25NuQ6IFXC/75R1s7hApnyU5FrIeaDUv3ju1DS3u7clsJt5MoiPyNVYp+Vs7spIp+FMuWnI9c1/rNSpSzsmpR1LiLfc1MObIeXq4JUCfv3LB67m9cHd38OyJRfElauSlKlDHw9iBaRl9ySg9vh5KokVcL9Yvf2tNJ5RUBh5ILZilD3hwB1T2P9M6zW+cyOAmyGZLYDRjMk+3YAbpkTbJbZ7DoCwDkmmMyZHNoDyBs2WNxYVPkE0MsFBlVUmheJDDby7HMTGuyJCDjizA3U2S4ZCXSkWbeT73BGBOARZuygSvkSnsF7nq086QFXeAzA40wD1Di/pKcgPM1yPlkFFTwE4mEGBSrUb8FyMJZ7r5+kwooWA7LYs8Lo27dkKShLvbZPzsAKFgKz0KOBqPu3qDk4zb31T8rgihoD1NiTwWjHt6wpSE29jE/GQQcaAtXQg4Mo9Y0wMtiRa+tLwmFHIwIesabD6PSP1DPonmvpJx+gwx6B91gjQFT2RmwZfMva9kgH7LiFAC1qBozG/sg1RahZyz5ZJqj5b/YOfvPSw2VhviknhHoV7zYPlhRuIJVH2wbLhVQepZpmGiQXUk0BeH7vLBdSeZYpn62TXEiVg4+w3VgupIog0dKMjeRCqiXgkfZXlgupIsmzNitirdHh2CEClaWanpdy1zqUhpOLGkmFXE78ODRGY6mQ61Aqxi/qJBVyGfekqP3OUiFXUTpGTx4kFXIZ9WVX24OlQq5dKRk7SYlUyGXMm9V2K0r1VrPWatMc1E2ghQgtauqmSHcPBFoK0LL2wxBs6CLQI/gea+iiGrybnoH3XCt4rGPHHxH0iDXHUg62+siAR64dLOa+42oIVkMPfak7X01ToJp6cR572/E0Bqmxp7YpOKuuOUDNvTnToO44FoKz0GPdVIxXsxSYpV6Na3GufYtBWez5XErGrrYckOXejWlS1q6HYDzMUJaa8rM9BeJpFuXarLfnMQiPM62nqOyo5wA8z6ZMo8d2IoCPMONjqoO3IgGPNOtQrSKCjjhzV8kiA448e1PJAHup+Z8c8BVKyVakuv3MwuLG4tQnQM7xwWTOpGgPAJdxwWaZzeoRwK3i+XcQRtuMHs4A2AOO1Q1YreK5HQTUjcXeTzDbICUiL9P3+Jx8D/fX6YpyvWzEZOuwiDyLyNdJodLl4aSakq4kV8rgeapp/l1EfiLV+RgryfXzfCdKKlS4W4W9U+URVpDrK69pdvvk3QqpsuTPypWVs7t5QiykWoj9jFwLJe3tFpHPA3Ih1UbUB+X63Chr57CIfCsUC6l2xntArm87S+s/TUSeROT3TrmQqjDSArlSBk+F5XWfvkOuPwmQ7in0dneVKzFcevmTaorjKlf6tXj/Z64EIz3n8vPgbhq48/v1QXRieS9YYu3n119npiwHAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIAABCEAAAhCAAAQgAAEIQAACEIAABCAAAQhAAAIQgAAEIDCIwF9mw2ku6I9UyQAAAABJRU5ErkJggg==" />
+                        </defs>
+                    </svg></button>
             </div>
             <ul class="popup-order__time">
                 <li><button class="popup-order__time__btn active">Побыстрее</button></li>
