@@ -1,28 +1,6 @@
 let buttonText;
 let totalCart = 0;
-let hasDiscount = false;
-// let cartInputs = document.querySelectorAll(".popup-cart__quantity");
-// if (cartInputs.length) {
-//   cartInputs.forEach(function (element) {
-//     element.addEventListener("input", function () {
-//       this.value = this.value.replace(/\D/g, "");
-//       if (this.value > 999) this.value = 999;
-//       this.value = +this.value;
-//       const quantityIndex = this.dataset.index;
-//       cartItems[quantityIndex].quantity = this.value;
-
-//       const cartItem = cartItems[quantityIndex];
-//       const total = cartItem.price * cartItem.quantity;
-
-//       const container = this.closest(".popup-cart__body");
-//       const summHtml = container.querySelector(".popup-cart__summ");
-//       if (summHtml) {
-//         summHtml.textContent = total.toLocaleString() + " ₽";
-//       }
-//       renderTotalPrice(cartItems);
-//     });
-//   });
-// }
+let hasDiscount = false; 
 document.querySelector(".prizes__btn").addEventListener("click", function () {
   document
     .querySelector(".prizes__info")
