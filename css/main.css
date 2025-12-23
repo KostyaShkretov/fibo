@@ -326,16 +326,23 @@ ul {
   justify-content: center;
 }
 .popup-cart__img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  flex-shrink: 0;
   margin-right: 24px;
 }
 .popup-cart__list {
   display: flex;
   align-items: center;
+  width: 100%;
 }
 .popup-cart__about {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  flex: 1;
+  min-width: 0;
 }
 .popup-cart__about h4 {
   font-size: 18px;
@@ -346,13 +353,13 @@ ul {
   font-size: 12px;
   font-weight: 300;
   max-width: 408px;
-} 
+}
 .popup-cart__summ {
   color: var(--color__btn);
   font-size: 24px;
   font-weight: 800;
   margin-right: 32px;
-  min-width: 100px; 
+  min-width: 100px;
   flex-shrink: 0;
 }
 .popup-cart__calc {
@@ -470,7 +477,7 @@ input::placeholder {
   font-size: 36px;
   font-weight: 700;
   align-items: baseline;
-} 
+}
 /* end promocode */
 
 /* form-input */
@@ -576,3 +583,4 @@ input::placeholder {
 .checkout-footer__btn--order:hover::after {
   color: white;
 }
+/* end checkout-footer */

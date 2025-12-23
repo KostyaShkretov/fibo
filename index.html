@@ -84,9 +84,8 @@
                 </div>
                 <button class="prizes__btn" data-text="Скрыть">Подробнее</button>
             </div>
-        </section>
+        </section> 
 
-        </section>
         <section class="menu">
             <div class="menu__container">
                 <div class="menu__lable">
@@ -100,14 +99,14 @@
                 <button class="menu__btn">
                     <span> Корзина </span>
                     <span class="separator"> </span>
-                    <span> 0 </span>
+                    <span class="total__summ"> 0 </span>
                 </button>
             </div>
         </section>
     </main>
 
-    <section>
-        <div class="popup-cart popup-cart__container">
+    <section class="popup-cart">
+        <div class="popup-cart__container">
             <div class="popup-cart__head">
                 <header class="popup-cart__header">Корзина</header>
             </div>
@@ -136,24 +135,28 @@
                 </div> -->
             </div>
         </div>
-        <div class="promocode">
-            <div class="promocode__container">
-                <div class="promocode__head">
-                    <h4 class="promocode__header">Промокод</h4>
+    </section>
+
+    <section class="promocode">
+        <div class="promocode__container">
+            <div class="promocode__head">
+                <h4 class="promocode__header">Промокод</h4>
+            </div>
+            <div class="promocode__block">
+                <div class="promocode__input">
+                    <input type="text" name="promocode" placeholder="Введите промокод">
+                    <button class="promocode__btn">Применить</button>
                 </div>
-                <div class="promocode__block">
-                    <div class="promocode__input">
-                        <input type="text" name="promocode"placeholder="Введите промокод">
-                        <button class="promocode__btn">Применить</button>
-                    </div>
-                    <div class="promocode__summ">
-                        <h5>Сумма заказа: </h5>
-                        <p> <span>0</span> ₽</p>
-                    </div>
+                <div class="promocode__summ">
+                    <h5>Сумма заказа: </h5>
+                    <p> <span class="total__summ">0</span> ₽</p>
                 </div>
             </div>
         </div>
-        <div class="form form__container">
+    </section>
+
+    <section class="form">
+        <div class="form__container">
             <div>
                 <h5>Заказ на доставку</h5>
             </div>
@@ -172,7 +175,10 @@
                 </div>
             </div>
         </div>
-        <div class="checkout-footer checkout-footer__container">
+    </section>
+
+    <section class="checkout-footer">
+        <div class="checkout-footer__container">
             <div class="checkout-footer__buttons">
                 <div class="checkout-footer__button">
                     <button class="checkout-footer__btn--back">Вернуться в магазин</button>
@@ -185,6 +191,7 @@
             </div>
         </div>
     </section>
+
 
     <!-- <section class="sauses">
             <div class="sauses__container">
