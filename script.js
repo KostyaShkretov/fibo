@@ -1,6 +1,6 @@
 let buttonText;
 let totalCart = 0;
-let hasDiscount = false; 
+let hasDiscount = false;
 document.querySelector(".prizes__btn").addEventListener("click", function () {
   document
     .querySelector(".prizes__info")
@@ -104,7 +104,6 @@ fetch("https://example.shaklein.dev/cart/")
 sendOrder(cartItems);
 downLoadCart();
 
-
 // применение промокода
 const applyPromocode = document.querySelector(".promocode__btn");
 if (applyPromocode) {
@@ -178,8 +177,7 @@ function pizzaListAdd(cartItems) {
                         <img src="images/close-popup.svg" alt="">
                     </div>
                 </div>`;
-    });
-
+    }); 
     cartItemsCategory.innerHTML = cartItemsHtml;
     renderTotalPrice(cartItems);
     handleQuantityInput();
@@ -207,14 +205,14 @@ function downLoadCart() {
         cartItems = decreaseProductQuantity(cartItems, productId);
       }
 
-      //Удаление 
+      //Удаление
       const btnDelete = event.target.closest(".popup-cart__delete");
-      if(btnDelete){
-         const parentContainer = event.target.closest(".popup-cart__body");
-         if(parentContainer){
-           const productId = parentContainer.dataset.id;
-           cartItems = removeProductFromCart(cartItems,productId);
-         } 
+      if (btnDelete) {
+        const parentContainer = event.target.closest(".popup-cart__body");
+        if (parentContainer) {
+          const productId = parentContainer.dataset.id;
+          cartItems = removeProductFromCart(cartItems, productId);
+        }
       }
     });
   }
@@ -241,13 +239,12 @@ function handleQuantityInput() {
             sumElement.textContent =
               (cartItem.price * cartItem.quantity).toLocaleString() + " ₽";
           }
-        } 
+        }
         renderTotalPrice(cartItems);
       });
     });
   }
 }
-
 
 //получение индекса товара по айди
 function getProductIndexbyId(cartItems, id) {
@@ -275,10 +272,10 @@ function decreaseProductQuantity(cartItems, id) {
 
 // Обновление количества товаров
 function updateProductQuantity(cartItems, id, quantity) {
-  const productIndex = getProductIndexbyId(cartItems, id); 
+  const productIndex = getProductIndexbyId(cartItems, id);
   quantity = parseInt(quantity);
   if (quantity > 999) quantity = 999;
-  if (quantity < 0 )  quantity = 0;
+  if (quantity < 0) quantity = 0;
   cartItems[productIndex].quantity = quantity;
 
   renderCartItem(cartItems, id);
@@ -286,6 +283,7 @@ function updateProductQuantity(cartItems, id, quantity) {
 
   return cartItems;
 }
+
 //удаление товара из корзины
 function removeProductFromCart(cartItems, id) {
   const productIndex = getProductIndexbyId(cartItems, id);
@@ -293,6 +291,7 @@ function removeProductFromCart(cartItems, id) {
   pizzaListAdd(cartItems);
   return cartItems;
 }
+
 // отрисовка суммы конкретного товара
 function renderCartItem(cartItems, id) {
   const container = document.querySelector(
