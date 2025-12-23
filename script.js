@@ -1,7 +1,28 @@
 let buttonText;
 let totalCart = 0;
 let hasDiscount = false;
-document.addEventListener("DOMContentLoaded", function () {});
+// let cartInputs = document.querySelectorAll(".popup-cart__quantity");
+// if (cartInputs.length) {
+//   cartInputs.forEach(function (element) {
+//     element.addEventListener("input", function () {
+//       this.value = this.value.replace(/\D/g, "");
+//       if (this.value > 999) this.value = 999;
+//       this.value = +this.value;
+//       const quantityIndex = this.dataset.index;
+//       cartItems[quantityIndex].quantity = this.value;
+
+//       const cartItem = cartItems[quantityIndex];
+//       const total = cartItem.price * cartItem.quantity;
+
+//       const container = this.closest(".popup-cart__body");
+//       const summHtml = container.querySelector(".popup-cart__summ");
+//       if (summHtml) {
+//         summHtml.textContent = total.toLocaleString() + " ₽";
+//       }
+//       renderTotalPrice(cartItems);
+//     });
+//   });
+// }
 document.querySelector(".prizes__btn").addEventListener("click", function () {
   document
     .querySelector(".prizes__info")
@@ -99,11 +120,12 @@ fetch("https://example.shaklein.dev/cart/")
   })
   .then(function (data) {
     cartItems = data.cartItems;
-    pizzaListAdd();
+    pizzaListAdd(cartItems);
   });
 
 sendOrder(cartItems);
 downLoadCart();
+
 
 // применение промокода
 const applyPromocode = document.querySelector(".promocode__btn");
@@ -150,12 +172,12 @@ if (popupShow) {
 
 //функции
 
-function pizzaListAdd() {
+function pizzaListAdd(cartItems) {
   const cartItemsCategory = document.querySelector(".popup-cart__items");
   if (cartItemsCategory) {
     let cartItemsHtml = "";
-    cartItems.forEach(function (e, index) {
-      cartItemsHtml += `<div class="popup-cart__body"> 
+    cartItems.forEach(function (e) {
+      cartItemsHtml += `<div class="popup-cart__body" data-id="${e.id}"> 
                         <img src="${e.image}" class="popup-cart__img" alt=""> 
                     <div class="popup-cart__list">
                         <div class="popup-cart__about">
@@ -167,11 +189,11 @@ function pizzaListAdd() {
                             ${e.price * e.quantity} ₽
                         </div>
                         <div class="popup-cart__calc">
-                            <button class="popup-cart__minus" data-index = "${index}">-</button>
-                            <input type="text" data-index = "${index}" value="${
-        e.quantity
-      }" class="popup-cart__quantity">
-                            <button class="popup-cart__plus" data-index = "${index}">+</button>
+                            <button class="popup-cart__minus" >-</button>
+                            <input type="text" value="${
+                              e.quantity
+                            }" class="popup-cart__quantity">
+                            <button class="popup-cart__plus"  >+</button>
                         </div> 
                     </div>
                     <div class="popup-cart__delete">
@@ -179,75 +201,133 @@ function pizzaListAdd() {
                     </div>
                 </div>`;
     });
-    renderTotalPrice(cartItems);
+
     cartItemsCategory.innerHTML = cartItemsHtml;
-
-    let cartInputs = document.querySelectorAll(".popup-cart__quantity");
-    if (cartInputs.length) {
-      cartInputs.forEach(function (element) {
-        element.addEventListener("input", function () {
-          this.value = this.value.replace(/\D/g, "");
-          if (this.value > 999) this.value = 999;
-          this.value = +this.value;
-          const quantityIndex = this.dataset.index;
-          cartItems[quantityIndex].quantity = this.value;
-
-          const cartItem = cartItems[quantityIndex];
-          const total = cartItem.price * cartItem.quantity;
-
-          const container = this.closest(".popup-cart__body");
-          const summHtml = container.querySelector(".popup-cart__summ");
-          if (summHtml) {
-            summHtml.textContent = total.toLocaleString() + " ₽";
-          }
-          renderTotalPrice(cartItems);
-        });
-      });
-    }
+    renderTotalPrice(cartItems);
+    handleQuantityInput();
   }
 }
 
+// Изменение количества товаров
 function downLoadCart() {
   let cartDownload = document.querySelector(".popup-cart__items");
   if (cartDownload) {
     cartDownload.addEventListener("click", function (event) {
       const btnPlus = event.target.closest(".popup-cart__plus");
+      //Увеличение
       if (btnPlus) {
-        const itemIndex = btnPlus.dataset.index;
-        const cartItem = cartItems[itemIndex];
         const parentContainer = event.target.closest(".popup-cart__body");
-        const cartInput = parentContainer.querySelector(
-          ".popup-cart__quantity"
-        );
-        if (+cartInput.value < 999) {
-          cartInput.value++;
-          cartItems[itemIndex].quantity = cartInput.value;
-          renderTotalPrice(cartItems);
-        }
-        const total = +cartInput.value * cartItem.price;
-        parentContainer.querySelector(".popup-cart__summ").textContent =
-          total.toLocaleString() + " ₽";
+        const productId = parentContainer.dataset.id;
+        cartItems = increaseProductQuantity(cartItems, productId);
       }
 
-      let btnMinus = event.target.closest(".popup-cart__minus");
+      const btnMinus = event.target.closest(".popup-cart__minus");
+      // Уменьшение
       if (btnMinus) {
-        const itemIndex = btnMinus.dataset.index;
-        const cartItem = cartItems[itemIndex];
         const parentContainer = event.target.closest(".popup-cart__body");
-        const cartInput = parentContainer.querySelector(
-          ".popup-cart__quantity"
-        );
-        if (+cartInput.value > 0) {
-          cartInput.value--;
-          cartItems[itemIndex].quantity = cartInput.value;
-          renderTotalPrice(cartItems);
-        }
-        const total = +cartInput.value * cartItem.price;
-        parentContainer.querySelector(".popup-cart__summ").textContent =
-          total.toLocaleString() + " ₽";
+        const productId = parentContainer.dataset.id;
+        cartItems = decreaseProductQuantity(cartItems, productId);
+      }
+
+      //Удаление 
+      const btnDelete = event.target.closest(".popup-cart__delete");
+      if(btnDelete){
+         const parentContainer = event.target.closest(".popup-cart__body");
+         if(parentContainer){
+           const productId = parentContainer.dataset.id;
+           cartItems = removeProductFromCart(cartItems,productId);
+         } 
       }
     });
   }
+}
+
+//Ограничение ввода
+function handleQuantityInput() {
+  const cartInputs = document.querySelectorAll(".popup-cart__quantity");
+  if (cartInputs.length) {
+    cartInputs.forEach(function (element) {
+      element.addEventListener("input", function () {
+        this.value = this.value.replace(/\D/g, "");
+        if (this.value > 999) this.value = 999;
+        if (this.value === "") this.value = 0;
+
+        const parentContainer = this.closest(".popup-cart__body");
+        const productId = parentContainer.dataset.id;
+        cartItems = updateProductQuantity(cartItems, productId, this.value);
+
+        const cartItem = cartItems.find((item) => item.id == productId);
+        if (cartItem) {
+          const sumElement = parentContainer.querySelector(".popup-cart__summ");
+          if (sumElement) {
+            sumElement.textContent =
+              (cartItem.price * cartItem.quantity).toLocaleString() + " ₽";
+          }
+        } 
+        renderTotalPrice(cartItems);
+      });
+    });
+  }
+}
+
+
+//получение индекса товара по айди
+function getProductIndexbyId(cartItems, id) {
+  const productIndex = cartItems.findIndex(function (cartItem) {
+    return cartItem.id == id;
+  });
+  return productIndex;
+}
+
+//Увеличение количества товаров
+function increaseProductQuantity(cartItems, id) {
+  const productIndex = getProductIndexbyId(cartItems, id);
+  const cartItem = cartItems[productIndex];
+  cartItems = updateProductQuantity(cartItems, id, cartItem.quantity + 1);
+  return cartItems;
+}
+
+// Уменьшение количества товаров
+function decreaseProductQuantity(cartItems, id) {
+  const productIndex = getProductIndexbyId(cartItems, id);
+  const cartItem = cartItems[productIndex];
+  cartItems = updateProductQuantity(cartItems, id, cartItem.quantity - 1);
+  return cartItems;
+}
+
+// Обновление количества товаров
+function updateProductQuantity(cartItems, id, quantity) {
+  const productIndex = getProductIndexbyId(cartItems, id); 
+  quantity = parseInt(quantity);
+  if (quantity > 999) quantity = 999;
+  if (quantity < 0 )  quantity = 0;
+  cartItems[productIndex].quantity = quantity;
+
+  renderCartItem(cartItems, id);
+  renderTotalPrice(cartItems);
+
+  return cartItems;
+}
+//удаление товара из корзины
+function removeProductFromCart(cartItems, id) {
+  const productIndex = getProductIndexbyId(cartItems, id);
+  cartItems.splice(productIndex, 1);
+  pizzaListAdd(cartItems);
+  return cartItems;
+}
+// отрисовка суммы конкретного товара
+function renderCartItem(cartItems, id) {
+  const container = document.querySelector(
+    `.popup-cart__body[data-id="${id}"]`
+  );
+  const productIndex = getProductIndexbyId(cartItems, id);
+  const cartItem = cartItems[productIndex];
+
+  const productInput = container.querySelector(".popup-cart__quantity");
+  productInput.value = cartItem.quantity;
+
+  const sum = (cartItem.quantity * cartItem.price).toLocaleString();
+  container.querySelector(".popup-cart__summ").textContent = sum + " ₽";
 }
 
 //  общие суммы корзины
