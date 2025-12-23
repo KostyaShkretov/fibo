@@ -1,5 +1,6 @@
 let buttonText;
 let totalCart = 0;
+let hasDiscount = false;
 document.addEventListener("DOMContentLoaded", function () {});
 document.querySelector(".prizes__btn").addEventListener("click", function () {
   document
@@ -101,9 +102,24 @@ fetch("https://example.shaklein.dev/cart/")
     pizzaListAdd();
   });
 
-sendOrder();
-downLoadCart(); 
-      
+sendOrder(cartItems);
+downLoadCart();
+
+// применение промокода
+const applyPromocode = document.querySelector(".promocode__btn");
+if (applyPromocode) {
+  applyPromocode.addEventListener("click", function () {
+    const promocodeInput = document.querySelector('input[name="promocode"]');
+    hasDiscount = false;
+    if (promocodeInput.value.trim() === "777") {
+      hasDiscount = true;
+      alert("Промокод применен");
+    } else {
+      alert("Неверный промокд");
+    }
+    renderTotalPrice(cartItems);
+  });
+}
 
 const popupShow = document.querySelector(".popup-order");
 const popupBtn = document.querySelector(".order__btn");
@@ -131,7 +147,6 @@ if (popupShow) {
     });
   }
 }
-
 
 //функции
 
@@ -242,6 +257,9 @@ function renderTotalPrice(items) {
   items.forEach(function (item) {
     totalCart += item.price * item.quantity;
   });
+  if (hasDiscount) {
+    totalCart = totalCart * 0.9;
+  }
   if (cartTotalHtml.length) {
     cartTotalHtml.forEach(function (e) {
       e.textContent = totalCart.toLocaleString();
@@ -250,7 +268,7 @@ function renderTotalPrice(items) {
 }
 
 // отправка заказа на сервер
-function sendOrder() { 
+function sendOrder(cartItems) {
   const checkOutButton = document.querySelector(".checkout-footer__btn--order");
   if (checkOutButton) {
     checkOutButton.addEventListener("click", function () {
